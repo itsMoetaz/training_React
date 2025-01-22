@@ -54,6 +54,7 @@ function App() {
   }
   console.log(exercice3(students));
 
+  
   let id = 0;
   const generateId = () => id++;
   let tab = [
