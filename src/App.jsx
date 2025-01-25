@@ -67,9 +67,7 @@ function App() {
   console.log(tab);
   const exercice4 =  search(1, tab).then((e) => console.log(e.name));
   
-
-
-
+  
   return (
     <>
       <div>
