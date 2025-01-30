@@ -4,7 +4,7 @@ pipeline {
         maven 'M2_HOME'
     }
     options {
-        timeout(time: 1, unit: 'SECONDS')
+        timeout(time: 30, unit: 'MINUTES')  // Augmenter le délai d'attente
     }
     environment {
         APP_ENV = "DEV"
@@ -13,8 +13,7 @@ pipeline {
         stage('Code Checkout') {
             steps {
                 git branch: 'master',
-                    url: 'https://github.com/itsMoetaz/training_React.git',
-                    credentialsId: 'jenkins-example-github-pat'
+                    url: 'https://github.com/itsMoetaz/training_React.git'
             }
         }
         stage('Code Build') {
