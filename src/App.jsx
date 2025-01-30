@@ -2,11 +2,18 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { search } from './Ecmascript/fonction'
+import  search  from './Ecmascript/fonction.js'
+import ClassComponents from './CourseComponents/Components/ClassComponents.jsx'
+import FunctionalComponent from './CourseComponents/Components/FunctionalComponent.jsx'
+import Methods from './CourseComponents/ClassComponentLifeCycle/Methods.jsx'
+import Mouting from './CourseComponents/ClassComponentLifeCycle/Mounting.jsx'
+import { Update } from './CourseComponents/ClassComponentLifeCycle/Update.jsx'
+import Unmouting from './CourseComponents/ClassComponentLifeCycle/Unmount.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const nom = "moetaz";
   // let somme = (a, b) => {
   //   return a + b;
   // }
@@ -23,51 +30,55 @@ function App() {
   // let person = { name: 'John', age: 30, city: 'New York' };
   // person = { ...person, age: 31 };
   // console.log(person);
-  const findsLongestWord = (words) => {
-    let newTabLong= words.map(e=>{return {"nom":e,"long":e.length}});
-    return newTabLong.reduce((acc, curr) => acc.long > curr.long ? acc : curr);
-  }
+//   const findsLongestWord = (words) => {
+//     let newTabLong= words.map(e=>{return {"nom":e,"long":e.length}});
+//     return newTabLong.reduce((acc, curr) => acc.long > curr.long ? acc : curr);
+//   }
   
-  console.log(findsLongestWord(words));
-  const input = [
-    ["a","b","c"],
-    ["d","c","f"],
-    ["c","f","i"]
-  ];
-  const exercie2 = (input) => { 
-    return input.flat().reduce((acc, curr)=>{
-      acc[curr] = (acc[curr] || 0) + 1;
-      return acc;
-    }, {});
-  }
-  console.log(exercie2(input));
+//   console.log(findsLongestWord(words));
+//   const input = [
+//     ["a","b","c"],
+//     ["d","c","f"],
+//     ["c","f","i"]
+//   ];
+//   const exercie2 = (input) => { 
+//     return input.flat().reduce((acc, curr)=>{
+//       acc[curr] = (acc[curr] || 0) + 1;
+//       return acc;
+//     }, {});
+//   }
+//   console.log(exercie2(input));
 
-  let students = [
-    { name: "John", age: 20, score: 45 },
-    { name: "Jane", age: 22, score: 90 },
-    { name: "Jim", age: 21, score: 89 },
-    { name: "Bob", age: 21, score: 20 }
-  ];
+//   let students = [
+//     { name: "John", age: 20, score: 45 },
+//     { name: "Jane", age: 22, score: 90 },
+//     { name: "Jim", age: 21, score: 89 },
+//     { name: "Bob", age: 21, score: 20 }
+//   ];
 
-  const exercice3 = (students) => {
-    return students.map(e => e.score < 50? e.score + 15 : e.score).filter(e => e > 50).reduce((acc, curr) => acc + curr, 0);
-  }
-  console.log(exercice3(students));
+//   const exercice3 = (students) => {
+//     return students.map(e => e.score < 50? e.score + 15 : e.score).filter(e => e > 50).reduce((acc, curr) => acc + curr, 0);
+//   }
+//   console.log(exercice3(students));
+
+
+// const etudiants = 
+//   { name: "Alice", age: 25 };
 
   
-  let id = 0;
-  const generateId = () => id++;
-  let tab = [
-    { name: "Alice", age: 25 },
-    { name: "Bob", age: 30 }
-  ];
-  tab.push({id: generateId(), name: "John", age: 20 });
-  console.log(tab);
-  tab = tab.map(e => e.id? e : {id: generateId(), ...e});
-  console.log(tab);
-  const exercice4 =  search(1, tab).then((e) => console.log(e.name));
+//   let id = 0;
+//   const generateId = () => id++;
+//   let tab = [
+//     { name: "Alice", age: 25 },
+//     { name: "Bob", age: 30 }
+//   ];
+//   tab.push({id: generateId(), name: "John", age: 20 });
+//   console.log(tab);
+//   tab = tab.map(e => e.id? e : {id: generateId(), ...e});
+//   console.log(tab);
+//   console.log(search(1, tab));
   
-
+//   var parent ;
 
 
   return (
@@ -81,6 +92,11 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <Methods />
+      <Unmouting />
+      <ClassComponents name="oumaima"/>
+      <FunctionalComponent name="oumaima" />
+
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
