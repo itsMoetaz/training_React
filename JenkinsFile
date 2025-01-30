@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'build' } }  // Define the agent once
+    agent any  // Utilise n'importe quel agent disponible
     tools {
         maven 'M2_HOME'
     }
