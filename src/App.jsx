@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -9,6 +9,9 @@ import Methods from './CourseComponents/ClassComponentLifeCycle/Methods.jsx'
 import Mouting from './CourseComponents/ClassComponentLifeCycle/Mounting.jsx'
 import { Update } from './CourseComponents/ClassComponentLifeCycle/Update.jsx'
 import Unmouting from './CourseComponents/ClassComponentLifeCycle/Unmount.jsx'
+import { use } from 'react'
+import Counter from './exercicePropsState/Counter.jsx'
+import ListeManager from './exercicePropsState/ListeManager.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -79,7 +82,15 @@ function App() {
 //   console.log(search(1, tab));
   
 //   var parent ;
+      const [{color,backgroungColor}, setColors] = useState({color:'black',backgroungColor:'white'});
+      useEffect(() => {
+        console.log('useEffect');
 
+      },[
+        count
+      ]);
+
+      const listIems = ["angular","react","vue"];
 
   return (
     <>
@@ -92,15 +103,18 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <Methods />
+      {/* <Methods />
       <Unmouting />
       <ClassComponents name="oumaima"/>
-      <FunctionalComponent name="oumaima" />
+      <FunctionalComponent name="oumaima" /> */}
+
 
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <h2>le couleur est {color} et le background {backgroungColor}</h2>
+        <input type="text" onChange={e => {setColors(c=>({...c,color:e.target.value}))}} />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
@@ -108,6 +122,12 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+        <Counter step={5}/>
+        <ListeManager lists={listIems}
+        placeholder="Ajouter une liste"
+        />
+
     </>
   )
 }
