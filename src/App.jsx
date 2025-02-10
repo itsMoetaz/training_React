@@ -12,6 +12,9 @@ import Unmouting from './CourseComponents/ClassComponentLifeCycle/Unmount.jsx'
 import { use } from 'react'
 import Counter from './exercicePropsState/Counter.jsx'
 import ListeManager from './exercicePropsState/ListeManager.jsx'
+import ColorChanger from './exercicePropsState/ColorChanger.jsx'
+import ListeDesNotes from './exercicePropsState/ListeDesNotes.jsx'
+import TodoList from './exercicePropsState/ToDoList.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -91,7 +94,14 @@ function App() {
       ]);
 
       const listIems = ["angular","react","vue"];
-
+      const initialColor = '#FF0000'; // Rouge
+      const colorOptions = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
+      const notes = [12, 15, 9, 18, 14];
+      const todoList =[
+        { name: 'Finir le projet React', priority: 'Haute', completed: false },
+        { name: 'Préparer le repas', priority: 'Moyenne', completed: false },
+        { name: 'Aller courir', priority: 'Basse', completed: true },
+      ];
   return (
     <>
       <div>
@@ -127,6 +137,9 @@ function App() {
         <ListeManager lists={listIems}
         placeholder="Ajouter une liste"
         />
+        <ColorChanger initialColor={initialColor} colorOptions={colorOptions} />
+        <ListeDesNotes initialNotes={notes} />
+        <TodoList todoList={todoList}/>
 
     </>
   )
