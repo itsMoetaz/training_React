@@ -29,9 +29,9 @@ export default function TodoList(props) {
             <button onClick={addTodo}>Ajouter</button>
             <ul>
                 {filteredTodo.map((tache, index) => (
-                    <li key={index} style={{backgroundColor: tache.completed? "green" : "grey"}}>{tache.name} - {tache.priority} 
+                    <li key={index} style={{backgroundColor: tache.completed? "green" : "grey",textDecoration: tache.completed?"line-through":"none"}}>{tache.name} - {tache.priority} 
                     <button onClick={()=>setTodo(todo.filter((e,i)=>i !== index))}>  Delete</button>
-                    <button onClick={()=>markAsCompleted(index)}>{tache.completed? "non terimné" : "terminé"}</button></li>
+                    <button onClick={()=>markAsCompleted(todo.indexOf(tache))}>{tache.completed? "non terimné" : "terminé"}</button></li>
                 ))} 
             </ul>
             <div>
