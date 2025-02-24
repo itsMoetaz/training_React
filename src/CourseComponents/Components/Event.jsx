@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 export default function Event(props) {
   const [nbTickets, setNbTickets] = useState(props.event.nbTickets);
   const [nbParticipants, setNbParticipants] = useState(props.event.nbParticipants);
@@ -28,10 +29,12 @@ export default function Event(props) {
     return (
 
         <div style={{display: 'inline-block', margin: '10px'}}>
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={`${props.event.img}`} />
-        <Card.Body style={{textAlign: 'left'}}>
-          <Card.Title>{props.event.name}</Card.Title>
+          <Card style={{ width: '18rem' }}>
+          <Card.Img variant="top" src={`${props.event.img}`} />
+          <Card.Body style={{textAlign: 'left'}}>
+          <Card.Title>
+            <Link to={`/event/${props.event.name}`}>{props.event.name}</Link>
+          </Card.Title>
           <Card.Text>price: {props.event.price}</Card.Text>
           <Card.Text>number of tickets: {nbTickets}</Card.Text>
           <Card.Text>number of participants: {nbParticipants}</Card.Text>

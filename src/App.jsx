@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import {Routes,Route,Link} from 'react-router-dom';
 import './App.css'
 import  search  from './Ecmascript/fonction.js'
 import ClassComponents from './CourseComponents/Components/ClassComponents.jsx'
@@ -17,6 +18,9 @@ import ListeDesNotes from './exercicePropsState/ListeDesNotes.jsx'
 import TodoList from './exercicePropsState/TodoList.jsx'
 import Event from './CourseComponents/Components/Event.jsx'
 import Events from './CourseComponents/Components/Events.jsx'
+import NotFound from './CourseComponents/Components/NotFound.jsx';
+import NavigationBar from './CourseComponents/Components/Navbar.jsx';
+import EventDetails from './CourseComponents/Components/EventDetails.jsx';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -107,6 +111,7 @@ function App() {
       ];
   return (
     <>
+      <NavigationBar />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -123,11 +128,6 @@ function App() {
 
 
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <h2>le couleur est {color} et le background {backgroungColor}</h2>
-        <input type="text" onChange={e => {setColors(c=>({...c,color:e.target.value}))}} />
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
@@ -135,16 +135,19 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+    
+      <Routes >
+        <Route path="/" element={<Counter step={1} />} />
+        <Route path="/list-manager" element={<ListeManager lists={listIems} placeholder="Ajouter une liste" />} />
+        <Route path="/color-changer" element={<ColorChanger initialColor={initialColor} colorOptions={colorOptions} />} />
+        <Route path="/notes" element={<ListeDesNotes initialNotes={notes} />} />
+        <Route path="/todo-list" element={<TodoList todoList={todoList} />} />
+        <Route path="/event" element={<Events />} />
+        <Route path="/event/:eventName" element={<EventDetails />} />
+        <Route path="*" element={<NotFound />} /> {/* Route pour les pages non trouvées */}
+      </Routes >
 
-        <Counter step={5}/>
-        <ListeManager lists={listIems}
-        placeholder="Ajouter une liste"
-        />
-        <ColorChanger initialColor={initialColor} colorOptions={colorOptions} />
-        <ListeDesNotes initialNotes={notes} />
-        <TodoList todoList={todoList}/>
-        <Events />
-    </>
+      </>
   )
 }
 
